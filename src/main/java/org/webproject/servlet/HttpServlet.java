@@ -75,25 +75,25 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         DBUtility dbutil = new DBUtility();
         String sql;
 
-        // 1. create emergency contact
+        // 1. create reporter
         int contact_id = 0;
-        String contact_fN = request.getParameter("contact_fN");
-        String contact_lN = request.getParameter("contact_lN");
-        String contact_tel = request.getParameter("contact_tel");
-        String contact_email = request.getParameter("contact_email");
-        if (contact_fN != null) {contact_fN = "'" + contact_fN + "'";}
-        if (contact_lN != null) {contact_lN = "'" + contact_lN + "'";}
-        if (contact_tel != null) {contact_tel = "'" + contact_tel + "'";}
-        if (contact_email != null) {contact_email = "'" + contact_email + "'";}
-        if (contact_fN != null && contact_lN != null) {
-            // create the contact
-            sql = "insert into person (first_name, last_name, telephone, email) " +
-                    "values (" + contact_fN + "," + contact_lN + "," + contact_tel + ","
-                    + contact_email + ")";
+        String reporter_fName = request.getParameter("contact_fN");
+        String reporter_lName = request.getParameter("contact_lN");
+        String reporter_phone = request.getParameter("contact_tel");
+        String reporter_email = request.getParameter("contact_email");
+        if (reporter_fName != null) {reporter_fName = "'" + reporter_fName + "'";}
+        if (reporter_lName != null) {reporter_lName = "'" + reporter_lName + "'";}
+        if (reporter_phone != null) {reporter_phone = "'" + reporter_phone + "'";}
+        if (reporter_email != null) {reporter_email = "'" + reporter_email + "'";}
+        if (reporter_fName != null && reporter_lName != null) {
+            // create the reporter
+            sql = "insert into geo576.reporter (first_name, last_name, email, phone_num) " +
+                    "values (" + reporter_fName + "," + reporter_lName + "," + reporter_email + "," +
+                    reporter_phone + ")";
             dbutil.modifyDB(sql);
 
-            // record the contact id
-            ResultSet res_1 = dbutil.queryDB("select last_value from person_id_seq");
+            // record the reporter id
+            ResultSet res_1 = dbutil.queryDB("select last_value from geo576.reporter_id_seq");
             res_1.next();
             contact_id = res_1.getInt(1);
 

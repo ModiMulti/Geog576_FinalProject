@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/disastermngt</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="geo576@amazon" uuid="551c41b7-d07b-40eb-bce0-87b3be5e6ae4">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://geo576final.cyvjwyqynbfu.us-east-2.rds.amazonaws.com:5432/geo576</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
