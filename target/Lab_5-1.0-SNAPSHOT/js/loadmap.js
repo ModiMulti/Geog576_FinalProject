@@ -10,7 +10,7 @@ function initialization() {
 
 function showAllReports() {
     $.ajax({
-        url: 'RunQuery.jsp',
+        url: 'HttpServlet',
         type: 'POST',
         data: { "tab_id": "1"},
         success: function(reports) {

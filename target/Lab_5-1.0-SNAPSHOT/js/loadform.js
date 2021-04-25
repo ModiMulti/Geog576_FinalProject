@@ -53,12 +53,12 @@ function createReport(event) {
     });
 
     $.ajax({
-        url: 'RunQuery.jsp',
+        url: 'HttpServlet',
         type: 'POST',
         data: a,
         success: function (report) {
             $.ajax({
-                url: 'RunQuery.jsp',
+                url: 'HttpServlet',
                 type: 'POST',
                 data: {"tab_id": "1"},
                 success: function (reports) {
@@ -90,7 +90,7 @@ function queryReport(event) {
     a.push({ name: "tab_id", value: "1" });
     a = a.filter(function(item){return item.value != '';});
     $.ajax({
-        url: 'RunQuery.jsp',
+        url: 'HttpServlet',
         type: 'POST',
         data: a,
         success: function(reports) {
