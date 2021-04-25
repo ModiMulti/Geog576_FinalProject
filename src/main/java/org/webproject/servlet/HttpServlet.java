@@ -97,45 +97,10 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
             res_1.next();
             contact_id = res_1.getInt(1);
 
-            System.out.println("Success! Contact created.");
+            System.out.println("Reporter Successfully created.");
         }
 
-        // 2. create user
-        int user_id = 0;
-        String fN = request.getParameter("fN");
-        String lN = request.getParameter("lN");
-        String is_male = request.getParameter("is_male");
-        String age = request.getParameter("age");
-        String blood_type = request.getParameter("blood_type");
-        String tel = request.getParameter("tel");
-        String email = request.getParameter("email");
-        if (fN != null) {fN = "'" + fN + "'";}
-        if (lN != null) {lN = "'" + lN + "'";}
-        if (is_male != null) {is_male = "'" + is_male + "'";}
-        if (age != null) {age = "'" + age + "'";}
-        if (blood_type != null) {blood_type = "'" + blood_type + "'";}
-        if (tel != null) {tel = "'" + tel + "'";}
-        if (email != null) {email = "'" + email + "'";}
-
-        sql = "insert into person (first_name, last_name, is_male, age, " +
-                "blood_type, telephone, email, emergency_contact_id) values (" + fN +
-                "," + lN + "," + is_male + "," + age + "," + blood_type + "," + tel +
-                "," + email;
-        if (contact_id > 0) { // check whether has a contact
-            sql += "," + contact_id + ")";
-        } else {
-            sql += ",null)";
-        }
-        dbutil.modifyDB(sql);
-
-        // record user_id
-        ResultSet res_2 = dbutil.queryDB("select last_value from person_id_seq");
-        res_2.next();
-        user_id = res_2.getInt(1);
-
-        System.out.println("Success! User created.");
-
-        // 3. create report
+        // 2. create report
         int report_id = 0;
         String report_type = request.getParameter("report_type");
         String disaster_type = request.getParameter("disaster_type");
