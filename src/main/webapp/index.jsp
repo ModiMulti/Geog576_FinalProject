@@ -131,29 +131,27 @@
         test_report_submission();
         test_query_report();
     }
-
-/*    function test_report_submission() {
-        $.ajax({
-            url: 'RunQuery.jsp',
-            type: 'POST',
-            data: { "tab_id": "0", "fN": "Jason", "lN": "Zhou",  "is_male": "t",
-                "age": "30", "blood_type": "AB", "tel": "928-777-8856", "email":
-                    "jasonzhou@gmail.com", "contact_fN": "Bill", "contact_lN": "Huang",
-                "contact_tel": "608-888-9876", "contact_email": "billh@gmail.com",
-                "report_type": "request", "disaster_type": "wildfire", "longitude":
-                    "-87", "latitude": "33", "message": "request rescue!!!",
-                "additional_message": "rescue/volunteer"},
-            success: function(data){
-                $.each(data, function(i, name) {
-                    alert("key: " + i + ", value: " + name);
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("An AJAX error occured: " + status + "\nError: " + error);
-            }
-        });
-    }*/
-
+    /*    function test_report_submission() {
+            $.ajax({
+                url: 'RunQuery.jsp',
+                type: 'POST',
+                data: { "tab_id": "0", "fN": "Jason", "lN": "Zhou",  "is_male": "t",
+                    "age": "30", "blood_type": "AB", "tel": "928-777-8856", "email":
+                        "jasonzhou@gmail.com", "contact_fN": "Bill", "contact_lN": "Huang",
+                    "contact_tel": "608-888-9876", "contact_email": "billh@gmail.com",
+                    "report_type": "request", "disaster_type": "wildfire", "longitude":
+                        "-87", "latitude": "33", "message": "request rescue!!!",
+                    "additional_message": "rescue/volunteer"},
+                success: function(data){
+                    $.each(data, function(i, name) {
+                        alert("key: " + i + ", value: " + name);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert("An AJAX error occured: " + status + "\nError: " + error);
+                }
+            });
+        }*/
     /*function test_report_submission() {
         $.ajax({
             url: 'RunQuery.jsp',
@@ -170,7 +168,6 @@
             }
         });
     }*/
-
     /*function test_query_report() {
         $.ajax({
             url: 'RunQuery.jsp',
@@ -186,8 +183,6 @@
                 alert("An AJAX error occured: " + status + "\nError: " + error);
             }
         });*/
-
-
     /*function test_query_report() {
         $.ajax({
             url: 'HttpServlet',

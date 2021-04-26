@@ -75,7 +75,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         DBUtility dbutil = new DBUtility();
         String sql;
 
-        // 1. create emergency contact
+        /*// 1. create emergency contact
         int contact_id = 0;
         String contact_fN = request.getParameter("contact_fN");
         String contact_lN = request.getParameter("contact_lN");
@@ -98,50 +98,53 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
             contact_id = res_1.getInt(1);
 
             System.out.println("Success! Contact created.");
-        }
+        }*/
 
         // 2. create user
-        int user_id = 0;
+        int id = 0; // TODO: 4/27/2021 maybe change this to user id to differentiate from report id 
         String fN = request.getParameter("fN");
         String lN = request.getParameter("lN");
-        String is_male = request.getParameter("is_male");
+        /*String is_male = request.getParameter("is_male");
         String age = request.getParameter("age");
-        String blood_type = request.getParameter("blood_type");
-        String tel = request.getParameter("tel");
+        String blood_type = request.getParameter("blood_type");*/
+        String phone_num = request.getParameter("tel");
         String email = request.getParameter("email");
         if (fN != null) {fN = "'" + fN + "'";}
         if (lN != null) {lN = "'" + lN + "'";}
-        if (is_male != null) {is_male = "'" + is_male + "'";}
+        /*if (is_male != null) {is_male = "'" + is_male + "'";}
         if (age != null) {age = "'" + age + "'";}
-        if (blood_type != null) {blood_type = "'" + blood_type + "'";}
-        if (tel != null) {tel = "'" + tel + "'";}
+        if (blood_type != null) {blood_type = "'" + blood_type + "'";}*/
+        if (phone_num != null) {phone_num = "'" + phone_num + "'";}
         if (email != null) {email = "'" + email + "'";}
 
-        sql = "insert into person (first_name, last_name, is_male, age, " +
-                "blood_type, telephone, email, emergency_contact_id) values (" + fN +
-                "," + lN + "," + is_male + "," + age + "," + blood_type + "," + tel +
-                "," + email;
-        if (contact_id > 0) { // check whether has a contact
+        sql = "insert into reporter (first_name, last_name, email, phone_num) values (" + fN +
+                "," + lN + "," + email + "," + phone_num;
+       /* if (contact_id > 0) { // check whether has a contact
             sql += "," + contact_id + ")";
         } else {
             sql += ",null)";
-        }
+        }*/
         dbutil.modifyDB(sql);
 
         // record user_id
         ResultSet res_2 = dbutil.queryDB("select last_value from person_id_seq");
         res_2.next();
-        user_id = res_2.getInt(1);
+        id = res_2.getInt(1);
 
         System.out.println("Success! User created.");
 
         // 3. create report
-        int report_id = 0;
-        String report_type = request.getParameter("report_type");
-        String disaster_type = request.getParameter("disaster_type");
+        int report_id = 0;// TODO: 4/27/2021 change name in db?
+        String reporter = request.getParameter("reporter");
+        String safety_condition = request.getParameter("safety_condition");
+        String description = request.getParameter("description");
+        String action_required = request.getParameter("action_required");
+        String report_date = request.getParameter("report_date");// TODO: 4/27/2021 > state
+        String locality = request.getParameter("locality");
+        String county = request.getParameter("county");
+        String state = request.getParameter("state");
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
-        String message = request.getParameter("message");
         String add_msg = request.getParameter("additional_message");
         if (report_type != null) {report_type = "'" + report_type + "'";}
         if (disaster_type != null) {disaster_type = "'" + disaster_type + "'";}
@@ -149,7 +152,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         if (add_msg != null) {add_msg = "'" + add_msg + "'";}
 
         sql = "insert into report (reportor_id, report_type, disaster_type, geom," +
-                " message) values (" + user_id + "," + report_type + "," + disaster_type
+                " message) values (" + id + "," + report_type + "," + disaster_type
                 + ", ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326)" + "," +
                 message + ")";
         dbutil.modifyDB(sql);
