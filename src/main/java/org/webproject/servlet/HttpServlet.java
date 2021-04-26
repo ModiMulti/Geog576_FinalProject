@@ -76,11 +76,11 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         String sql;
 
         // 1. create reporter
-        int contact_id = 0;
-        String reporter_fName = request.getParameter("contact_fN");
-        String reporter_lName = request.getParameter("contact_lN");
-        String reporter_phone = request.getParameter("contact_tel");
-        String reporter_email = request.getParameter("contact_email");
+        int reporter_id = 0;
+        String reporter_fName = request.getParameter("reporter_fN");
+        String reporter_lName = request.getParameter("reporter_lN");
+        String reporter_phone = request.getParameter("reporter_tel");
+        String reporter_email = request.getParameter("reporter_email");
         if (reporter_fName != null) {reporter_fName = "'" + reporter_fName + "'";}
         if (reporter_lName != null) {reporter_lName = "'" + reporter_lName + "'";}
         if (reporter_phone != null) {reporter_phone = "'" + reporter_phone + "'";}
@@ -95,54 +95,42 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
             // record the reporter id
             ResultSet res_1 = dbutil.queryDB("select last_value from geo576.reporter_id_seq");
             res_1.next();
-            contact_id = res_1.getInt(1);
+            reporter_id = res_1.getInt(1);
 
             System.out.println("Reporter Successfully created.");
         }
 
         // 2. create report
         int report_id = 0;
-        String report_type = request.getParameter("report_type");
-        String disaster_type = request.getParameter("disaster_type");
+        String safety_cond = request.getParameter("safety_condition");
+        String desc = request.getParameter("description");
+        String act_req = request.getParameter("action_required");
+        String local = request.getParameter("locality");
+        String county = request.getParameter("county");
+        String state = request.getParameter("state");
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
-        String message = request.getParameter("message");
-        String add_msg = request.getParameter("additional_message");
-        if (report_type != null) {report_type = "'" + report_type + "'";}
-        if (disaster_type != null) {disaster_type = "'" + disaster_type + "'";}
-        if (message != null) {message = "'" + message + "'";}
-        if (add_msg != null) {add_msg = "'" + add_msg + "'";}
+        if (safety_cond != null) {safety_cond = "'" + safety_cond + "'";}
+        if (desc != null) {desc = "'" + desc + "'";}
+        if (act_req != null) {act_req = "'" + act_req + "'";}
+        if (local != null) {local = "'" + local + "'";}
+        if (county != null) {county = "'" + county + "'";}
+        if (state != null) {state = "'" + state + "'";}
 
-        sql = "insert into report (reportor_id, report_type, disaster_type, geom," +
-                " message) values (" + user_id + "," + report_type + "," + disaster_type
-                + ", ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326)" + "," +
-                message + ")";
+        sql = "insert into geo576.report (reporter, safety_condition, description, action_required," +
+                "locality, county, state, geom) values (" + reporter_id + "," + safety_cond + "," + desc +
+                act_req + "," + local + "," + county + "," + state
+                + ", ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326))";
         dbutil.modifyDB(sql);
 
         // record report_id
-        ResultSet res_3 = dbutil.queryDB("select last_value from report_id_seq");
-        res_3.next();
-        report_id = res_3.getInt(1);
+        ResultSet res_2 = dbutil.queryDB("select last_value from geo576.report_id_seq");
+        res_2.next();
+        report_id = res_2.getInt(1);
 
         System.out.println("Success! Report created.");
 
-        // 4. create specific report
-        if (report_type.equals("'donation'")) {
-            sql = "insert into donation_report (report_id, resource_type) values ('"
-                    + report_id + "'," + add_msg + ")";
-            System.out.println("Success! Donation report created.");
-        } else if (report_type.equals("'request'")) {
-            sql = "insert into request_report (report_id, resource_type) values ('"
-                    + report_id + "'," + add_msg + ")";
-            System.out.println("Success! Request report created.");
-        } else if (report_type.equals("'damage'")) {
-            sql = "insert into damage_report (report_id, damage_type) values ('"
-                    + report_id + "'," + add_msg + ")";
-            System.out.println("Success! Damage report created.");
-        } else {
-            return;
-        }
-        dbutil.modifyDB(sql);
+
 
         // response that the report submission is successful
         JSONObject data = new JSONObject();
@@ -159,10 +147,10 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
             response) throws JSONException, SQLException, IOException {
         JSONArray list = new JSONArray();
 
-        String disaster_type = request.getParameter("disaster_type");
-        String report_type = request.getParameter("report_type");
-        // resource_or_damage will be null if report_type is null
-        String resource_or_damage = request.getParameter("resource_or_damage");
+        String safety_cond = request.getParameter("safety_condition");
+        String action_req = request.getParameter("action_required");
+
+
 
         // request report
         if (report_type == null || report_type.equalsIgnoreCase("request")) {
