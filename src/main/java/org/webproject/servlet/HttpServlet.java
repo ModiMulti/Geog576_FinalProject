@@ -153,7 +153,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
 
 
         // request report
-        if (report_type == null || report_type.equalsIgnoreCase("request")) {
+        if (action_req == null || action_req.equalsIgnoreCase("request")) {
             String sql = "select report.id, report_type, resource_type, " +
                     "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
                     "longitude, ST_Y(geom) as latitude, message from report, person, " +
@@ -163,7 +163,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         }
 
         // donation report
-        if (report_type == null || report_type.equalsIgnoreCase("donation")) {
+        if (action_req == null || action_req.equalsIgnoreCase("donation")) {
             String sql = "select report.id, report_type, resource_type, " +
                     "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
                     "longitude, ST_Y(geom) as latitude, message from report, person, " +
@@ -173,7 +173,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         }
 
         // damage report
-        if (report_type == null || report_type.equalsIgnoreCase("damage")) {
+        if (action_req == null || action_req.equalsIgnoreCase("damage")) {
             String sql = "select report.id, report_type, damage_type, " +
                     "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
                     "longitude, ST_Y(geom) as latitude, message from report, person, " +
