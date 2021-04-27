@@ -153,71 +153,54 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
 
 
         // request report
-        if (action_req == null || action_req.equalsIgnoreCase("request")) {
-            String sql = "select report.id, report_type, resource_type, " +
-                    "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
-                    "longitude, ST_Y(geom) as latitude, message from report, person, " +
-                    "request_report where reportor_id = person.id and report.id = " +
-                    "report_id";
-            queryReportHelper(sql,list,"request",disaster_type,resource_or_damage);
-        }
 
-        // donation report
-        if (action_req == null || action_req.equalsIgnoreCase("donation")) {
-            String sql = "select report.id, report_type, resource_type, " +
-                    "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
-                    "longitude, ST_Y(geom) as latitude, message from report, person, " +
-                    "donation_report where reportor_id = person.id and report.id = " +
-                    "report_id";
-            queryReportHelper(sql,list,"donation",disaster_type,resource_or_damage);
-        }
+        String sql = "select safety_condition, description, action_required, report_date" +
+            "reporter.first_name, reporter.last_name, reporter.email, reporter.phone_num," +
+            "locality, county, state, ST_X(geom) as longitude, ST_Y(geom) as latitude, from geo576.report report join geo576.reporter reporter " +
+            "ongeo576.report.reporter =geo576.reporter.id";
 
-        // damage report
-        if (action_req == null || action_req.equalsIgnoreCase("damage")) {
-            String sql = "select report.id, report_type, damage_type, " +
-                    "disaster_type, first_name, last_name, time_stamp, ST_X(geom) as " +
-                    "longitude, ST_Y(geom) as latitude, message from report, person, " +
-                    "damage_report where reportor_id = person.id and report.id = " +
-                    "report_id";
-            queryReportHelper(sql,list,"damage",disaster_type,resource_or_damage);
-        }
+
+
+        queryReportHelper(sql,list,safety_cond,action_req);
+
 
         response.getWriter().write(list.toString());
     }
 
-    private void queryReportHelper(String sql, JSONArray list, String report_type,
-                                   String disaster_type, String resource_or_damage) throws SQLException {
+    private void queryReportHelper(String sql, JSONArray list, String safety_cond,
+                                   String action_req) throws SQLException {
         DBUtility dbutil = new DBUtility();
-        if (disaster_type != null) {
-            sql += " and disaster_type = '" + disaster_type + "'";
-        }
-        if (resource_or_damage != null) {
-            if (report_type.equalsIgnoreCase("damage")) {
-                sql += " and damage_type = '" + resource_or_damage + "'";
+        if (safety_cond != null) {
+            if (action_req != null) {
+                sql += "where safety_condition = '" + safety_cond + "' and action_required = '" + action_req + "'";
             } else {
-                sql += " and resource_type = '" + resource_or_damage + "'";
+                sql += "where safety_condition = '" + safety_cond + "'";
+            }
+        } else {
+            if (action_req != null) {
+                sql += "where action_required = '" + action_req + "'";
+
             }
         }
+
         ResultSet res = dbutil.queryDB(sql);
         while (res.next()) {
             // add to response
             HashMap<String, String> m = new HashMap<String,String>();
             m.put("report_id", res.getString("id"));
-            m.put("report_type", res.getString("report_type"));
-            if (report_type.equalsIgnoreCase("donation") ||
-                    report_type.equalsIgnoreCase("request")) {
-                m.put("resource_type", res.getString("resource_type"));
-            }
-            else if (report_type.equalsIgnoreCase("damage")) {
-                m.put("damage_type", res.getString("damage_type"));
-            }
-            m.put("disaster", res.getString("disaster_type"));
+            m.put("safety_condition", res.getString("safety_condition"));
+            m.put("description", res.getString("description"));
+            m.put("action_required", res.getString("action_required"));
+            m.put("report_date", res.getString("report_date"));
+            m.put("locality", res.getString("locality"));
+            m.put("county", res.getString("county"));
+            m.put("state", res.getString("state"));
+            m.put("latitude", res.getString("latitude"));
+            m.put("longitude", res.getString("longitude"));
             m.put("first_name", res.getString("first_name"));
             m.put("last_name", res.getString("last_name"));
-            m.put("time_stamp", res.getString("time_stamp"));
-            m.put("longitude", res.getString("longitude"));
-            m.put("latitude", res.getString("latitude"));
-            m.put("message", res.getString("message"));
+            m.put("email", res.getString("email"));
+            m.put("phone_num", res.getString("phone_num"));
             list.put(m);
         }
     }
