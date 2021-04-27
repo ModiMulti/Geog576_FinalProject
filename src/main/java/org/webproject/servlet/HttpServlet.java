@@ -171,14 +171,18 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
                                    String action_req) throws SQLException {
         DBUtility dbutil = new DBUtility();
         if (safety_cond != null) {
-            if (action_req != null){
-                sql+="where safety_condition = '"+safety_cond+"' and action_required = '"+action_req+"'";
+            if (action_req != null) {
+                sql += "where safety_condition = '" + safety_cond + "' and action_required = '" + action_req + "'";
             } else {
-                sql+="where safety_condition = '" + safety_cond + "'";
+                sql += "where safety_condition = '" + safety_cond + "'";
+            }
+        } else {
+            if (action_req != null) {
+                sql += "where action_required = '" + action_req + "'";
+
+            }
         }
-        if (action_req != null) { //and safety_cond is null
-            sql += "where action_required = '" + action_req + "'";
-        }
+
         ResultSet res = dbutil.queryDB(sql);
         while (res.next()) {
             // add to response
@@ -186,7 +190,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
             m.put("report_id", res.getString("id"));
             m.put("safety_condition", res.getString("safety_condition"));
             m.put("description", res.getString("description"));
-            m.put("action_required", res.getString("action_required");
+            m.put("action_required", res.getString("action_required"));
             m.put("report_date", res.getString("report_date"));
             m.put("locality", res.getString("locality"));
             m.put("county", res.getString("county"));
