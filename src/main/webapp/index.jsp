@@ -45,41 +45,48 @@
                         <div><label>Last Name:&nbsp</label><input placeholder="Your last name" name="reporter_lN"></div>
                         <div><label>Tel:&nbsp</label><input placeholder="Your telephone number" name="reporter_tel"></div>
                         <div><label>Email:&nbsp</label><input placeholder="Your email address" name="reporter_email"></div>
-                        <div class="additional_msg_div" style="visibility: hidden"><label class="additional_msg"></label>
-                            <select class="additional_msg_select" name="additional_message"></select>
-                        </div>
+
                         <div><label>Action Required:</label>
                             <select name="action_required">
                                 <option value="">Choose action</option>
-                                <option value="cosmetic">cosmetic</option>
-                                <option value="inspection">inspection needed</option>
-                                <option value="maintenance">maintenance needed</option>
-                                <option value="hazard">safety hazard</option>
+                                <option value="cosmetic">Cosmetic</option>
+                                <option value="inspection needed">Inspection Needed</option>
+                                <option value="maintenance needed">Maintenance Needed</option>
+                                <option value="safety hazard">Safety Hazard</option>
                             </select>
                         </div>
-                        <div><label>Safety Condition::</label>
+                        <div><label>Safety Condition:</label>
                             <select onchange="onSelectReportType(this)" name="safety_condition">
                                 <option value="">Choose condition</option>
-                                <option value="pothole">pothole</option>
-                                <option value="cracking">crocodile cracking</option>
-                                <option value="blind">blind junction</option>
-                                <option value="overgrown">overgrown vegetation</option>
-                                <option value="debris">roadway debris</option>
-                                <option value="sidewalkdmg">damaged sidewalk</option>
-                                <option value="drain">blocked storm drain</option>
-                                <option value="graffiti">graffiti</option>
-                                <option value="playground">playground equipment</option>
-                                <option value="pedx">pedestrian crossing</option>
-                                <option value="pedwalkway">pedestrian walkway or facility</option>
-                                <option value="other">other</option>
+                                <option value="pothole">Pothole</option>
+                                <option value="crocodile cracking">Crocodile Cracking</option>
+                                <option value="blind junction">Blind Junction</option>
+                                <option value="overgrown vegetation">Overgrown Vegetation</option>
+                                <option value="roadway debris">Roadway Debris</option>
+                                <option value="damaged sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="graffiti">Graffiti</option>
+                                <option value="playground equipment">Playground Equipment</option>
+                                <option value="pedestrian crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        <div><label>Address:</label>
+                        <!--<div><label>Address:</label>
                             <input id="autocomplete" placeholder="Address" >
-                        </div>
+                        </div> -->
 
                         <div><label>Description:</label>
                             <input id="description" placeholder="Please enter a description." >
+                        </div>
+                        <div><label>Locality:</label>
+                            <input id="locality" placeholder="Please the local place name." >
+                        </div>
+                        <div><label>County:</label>
+                            <input id="county" placeholder="Please enter the county." >
+                        </div>
+                        <div><label>State:</label>
+                            <input id="state" placeholder="Please enter the state." >
                         </div>
 
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
@@ -88,36 +95,40 @@
                     </form>
                 </div>
 
-                <%--<!-- Query Report Tab Panel -->
+                <!-- Query Report Tab Panel -->
                 <div class="tab-pane" id="query_report">
                     <form id = "query_report_form">
-                        <div><label>Report Type:</label>
-                            <select onchange="onSelectReportType(this)" name="report_type">
-                                <option value="">Choose the report type</option>
-                                <option value="donation">Donation</option>
-                                <option value="request">Request</option>
-                                <option value="damage">Damage Report</option>
+                        <div><label>Safety Condition:</label>
+                            <select name="safety_condition">
+                                <option value="">Choose the Safety Condition</option>
+                                <option value="pothole">Pothole</option>
+                                <option value="crocodile cracking">Crocodile Cracking</option>
+                                <option value="blind junction">Blind Junction</option>
+                                <option value="overgrown vegetation">Overgrown Vegetation</option>
+                                <option value="roadway debris">Roadway Debris</option>
+                                <option value="damaged sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="graffiti">Graffiti</option>
+                                <option value="playground equipment">Playground Equipment</option>
+                                <option value="pedestrian crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="additional_msg_div" style="visibility: hidden"><label class="additional_msg"></label>
-                            <select class="additional_msg_select" name="resource_or_damage"></select>
-                        </div>
-                        <div><label>Disaster Type:</label>
-                            <select name="disaster_type">
-                                <option value="">Choose the disaster type</option>
-                                <option value="flood">flood</option>
-                                <option value="wildfire">wildfire</option>
-                                <option value="earthquake">earthquake</option>
-                                <option value="tornado">tornado</option>
-                                <option value="hurricane">hurricane</option>
-                                <option value="other">other</option>
+                        <div><label>Action Required:</label>
+                            <select name="action required">
+                                <option value="">Choose the Action Required</option>
+                                <option value="cosmetic">Cosmetic</option>
+                                <option value="inspection needed">Inspection Needed</option>
+                                <option value="maintenance needed">Maintenance Needed</option>
+                                <option value="safety hazard">Safety Hazard</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-default">
                             <span class="glyphicon glyphicon-star"></span> Submit the query
                         </button>
                     </form>
-                </div>--%>
+                </div>
             </div>
         </div>
 
@@ -129,78 +140,5 @@
 <script src="js/loadform.js"></script>
 <script src="js/loadmap.js"></script>
 
-<script>
-    window.onload = tests();
-    function tests() {
-        test_report_submission();
-        test_query_report();
-    }
-    /*    function test_report_submission() {
-            $.ajax({
-                url: 'RunQuery.jsp',
-                type: 'POST',
-                data: { "tab_id": "0", "fN": "Jason", "lN": "Zhou",  "is_male": "t",
-                    "age": "30", "blood_type": "AB", "tel": "928-777-8856", "email":
-                        "jasonzhou@gmail.com", "contact_fN": "Bill", "contact_lN": "Huang",
-                    "contact_tel": "608-888-9876", "contact_email": "billh@gmail.com",
-                    "report_type": "request", "disaster_type": "wildfire", "longitude":
-                        "-87", "latitude": "33", "message": "request rescue!!!",
-                    "additional_message": "rescue/volunteer"},
-                success: function(data){
-                    $.each(data, function(i, name) {
-                        alert("key: " + i + ", value: " + name);
-                    });
-                },
-                error: function(xhr, status, error) {
-                    alert("An AJAX error occured: " + status + "\nError: " + error);
-                }
-            });
-        }*/
-    /*function test_report_submission() {
-        $.ajax({
-            url: 'RunQuery.jsp',
-            type: 'POST',
-            data: { "tab_id": "0", "fN": "Dannis", "lN": "Black", "report_type": "damage",
-                "disaster_type": "hurricane", "longitude": "26.89", "latitude": "35.12", "additional_message": "pollution"},
-            success: function(data){
-                $.each(data, function(i, name) {
-                    alert("key: " + i + ", value: " + name);
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("An AJAX error occured: " + status + "\nError: " + error);
-            }
-        });
-    }*/
-    /*function test_query_report() {
-        $.ajax({
-            url: 'RunQuery.jsp',
-            type: 'POST',
-            data: { "tab_id": "1", "disaster_type": "hurricane", "report_type":
-                    "donation",  "resource_or_damage": "food"},
-            success: function(data){
-                $.each(data, function(i, e) {
-                    alert(JSON.stringify(e));
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("An AJAX error occured: " + status + "\nError: " + error);
-            }
-        });*/
-    /*function test_query_report() {
-        $.ajax({
-            url: 'HttpServlet',
-            type: 'POST',
-            data: { "tab_id": "1", "disaster_type": "hurricane", "report_type": "damage"},
-            success: function(data){
-                $.each(data, function(i, e) {
-                    alert(JSON.stringify(e));
-                });
-            },
-            error: function(xhr, status, error) {
-                alert("An AJAX error occured: " + status + "\nError: " + error);
-            }
-        });*/
-</script>
 </body>
 </html>

@@ -1,32 +1,43 @@
-function onSelectReportType(ele){
+/*function onSelectSafetyConditionType(ele){
     var form = $(ele).parent().parent();
     var label = $(form).find(".additional_msg");
     var select = $(form).find(".additional_msg_select");
 
     switch (ele.value) {
-        case "donation":
-        case "request":
-            label.text("Resource Type:");
+        case "cosmetic":
+            label.text("Cosmetic Type:");
             select.find('option').remove();
             select.append($("<option></option>")
                 .attr("value","")
-                .text("Choose the resource type"));
-            selectValues = ['water', 'food', 'money', 'medicine', 'cloth',
-                'rescue/volunteer'];
+                .text("Choose the cosmetic type"));
+            selectValues = ['blind', 'overgrown', 'graffiti', 'other',];
             $.each(selectValues, function(index,value) {
                 select.append($("<option></option>")
                     .attr("value",value)
                     .text(value));
             });
             break;
-        case "damage":
-            label.text("Damage Type:");
+        case "inspection":
+        case "maintenance":
+            label.text("Inspection or Maintenance Type:");
             select.find('option').remove();
             select.append($("<option></option>")
                 .attr("value","")
-                .text("Choose the damage type"));
-            selectValues = ['pollution', 'building damage', 'road damage', 'casualty',
-                'other'];
+                .text("Choose the inspection or maintenance type"));
+            selectValues = ['sidewalkdmg', 'pedx', 'pedwalkway', 'playground', 'other',];
+            $.each(selectValues, function(index,value) {
+                select.append($("<option></option>")
+                    .attr("value",value)
+                    .text(value));
+            });
+            break;
+        case "hazard":
+            label.text("Hazard Type:");
+            select.find('option').remove();
+            select.append($("<option></option>")
+                .attr("value","")
+                .text("Choose the hazard type"));
+            selectValues = ['pothole', 'cracking', 'debris', 'drain', 'other'];
             $.each(selectValues, function(index,value) {
                 select.append($("<option></option>")
                     .attr("value",value)
@@ -39,7 +50,7 @@ function onSelectReportType(ele){
     }
     $(form).find(".additional_msg_div").css("visibility", "visible");
 }
-
+*/
 // Answer - Question 4 - Lab 6
 function createReport(event) {
     event.preventDefault(); // stop form from submitting normally
