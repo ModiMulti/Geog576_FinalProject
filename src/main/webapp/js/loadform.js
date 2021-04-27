@@ -1,4 +1,4 @@
-function onSelectReportType(ele){
+/*function onSelectSafetyConditionType(ele){
     var form = $(ele).parent().parent();
     var label = $(form).find(".additional_msg");
     var select = $(form).find(".additional_msg_select");
@@ -50,7 +50,7 @@ function onSelectReportType(ele){
     }
     $(form).find(".additional_msg_div").css("visibility", "visible");
 }
-
+*/
 // Answer - Question 4 - Lab 6
 function createReport(event) {
     event.preventDefault(); // stop form from submitting normally

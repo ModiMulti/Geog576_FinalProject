@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>JDD GITHUB TEST</title>
+    <title>Community Improvement</title>
 
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -19,11 +19,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- Google Map js libraries-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places,visualization&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8lnqrxEsxXQSPlxLx1q6c249Weoc6MvA&libraries=places,visualization&callback=initMap"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <a class="navbar-brand">Disaster Management Portal</a>
+    <a class="navbar-brand">Community Improvement Portal</a>
 </nav>
 
 <div class="container-fluid">
@@ -41,55 +41,54 @@
                 <!-- Create Report Tab Panel -->
                 <div class="tab-pane active" id="create_report">
                     <form id = "create_report_form">
-                        <div><label>First Name:&nbsp</label><input placeholder="Your first name" name="fN"></div>
-                        <div><label>Last Name:&nbsp</label><input placeholder="Your last name" name="lN"></div>
-                        <div>
-                            <label><input type="radio" name="is_male" value="t">&nbspMale</label>
-                            <label><input type="radio" name="is_male" value="f">&nbspFemale</label>
-                        </div>
-                        <div><label>Age:&nbsp</label><input placeholder="Your age" name="age"></div>
-                        <div><label>Blood Type:</label>
-                            <select name="blood_type">
-                                <option value="">Choose your blood type</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="O">O</option>
-                                <option value="AB">AB</option>
-                                <option value="Other">Other</option>
+                        <div><label>First Name:&nbsp</label><input placeholder="Your first name" name="reporter_fN"></div>
+                        <div><label>Last Name:&nbsp</label><input placeholder="Your last name" name="reporter_lN"></div>
+                        <div><label>Tel:&nbsp</label><input placeholder="Your telephone number" name="reporter_tel"></div>
+                        <div><label>Email:&nbsp</label><input placeholder="Your email address" name="reporter_email"></div>
+
+                        <div><label>Action Required:</label>
+                            <select name="action_required">
+                                <option value="">Choose action</option>
+                                <option value="cosmetic">Cosmetic</option>
+                                <option value="inspection needed">Inspection Needed</option>
+                                <option value="maintenance needed">Maintenance Needed</option>
+                                <option value="safety hazard">Safety Hazard</option>
                             </select>
                         </div>
-                        <div><label>Tel:&nbsp</label><input placeholder="Your telephone number" name="tel"></div>
-                        <div><label>Email:&nbsp</label><input placeholder="Your email address" name="email"></div>
-                        <div><label>Contact's First Name:&nbsp</label><input placeholder="Contact's first name" name="contact_fN"></div>
-                        <div><label>Contact's Last Name:&nbsp</label><input placeholder="Contact's last name" name="contact_lN"></div>
-                        <div><label>Contact's Tel:&nbsp</label><input placeholder="Contact's telephone number" name="contact_tel"></div>
-                        <div><label>Contact's Email:&nbsp</label><input placeholder="Contact's email address" name="contact_email"></div>
-                        <div><label>Report Type:</label>
-                            <select onchange="onSelectReportType(this)" name="report_type">
-                                <option value="">Choose the report type</option>
-                                <option value="donation">Donation</option>
-                                <option value="request">Request</option>
-                                <option value="damage">Damage Report</option>
+                        <div><label>Safety Condition:</label>
+                            <select onchange="onSelectReportType(this)" name="safety_condition">
+                                <option value="">Choose condition</option>
+                                <option value="pothole">Pothole</option>
+                                <option value="crocodile cracking">Crocodile Cracking</option>
+                                <option value="blind junction">Blind Junction</option>
+                                <option value="overgrown vegetation">Overgrown Vegetation</option>
+                                <option value="roadway debris">Roadway Debris</option>
+                                <option value="damaged sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="graffiti">Graffiti</option>
+                                <option value="playground equipment">Playground Equipment</option>
+                                <option value="pedestrian crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="additional_msg_div" style="visibility: hidden"><label class="additional_msg"></label>
-                            <select class="additional_msg_select" name="additional_message"></select>
-                        </div>
-                        <div><label>Disaster Type:</label>
-                            <select name="disaster_type">
-                                <option value="">Choose the disaster type</option>
-                                <option value="flood">flood</option>
-                                <option value="wildfire">wildfire</option>
-                                <option value="earthquake">earthquake</option>
-                                <option value="tornado">tornado</option>
-                                <option value="hurricane">hurricane</option>
-                                <option value="other">other</option>
-                            </select>
-                        </div>
-                        <div><label>Address:</label>
+                        <!--<div><label>Address:</label>
                             <input id="autocomplete" placeholder="Address" >
+                        </div> -->
+
+                        <div><label>Description:</label>
+                            <input id="description" placeholder="Please enter a description." >
                         </div>
-                        <div><label>Comment:&nbsp</label><input placeholder="Additional message" name="message"></div>
+                        <div><label>Locality:</label>
+                            <input id="locality" placeholder="Please the local place name." >
+                        </div>
+                        <div><label>County:</label>
+                            <input id="county" placeholder="Please enter the county." >
+                        </div>
+                        <div><label>State:</label>
+                            <input id="state" placeholder="Please enter the state." >
+                        </div>
+
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
                             <span class="glyphicon glyphicon-star"></span> Submit
                         </button>
@@ -99,26 +98,30 @@
                 <!-- Query Report Tab Panel -->
                 <div class="tab-pane" id="query_report">
                     <form id = "query_report_form">
-                        <div><label>Report Type:</label>
-                            <select onchange="onSelectReportType(this)" name="report_type">
-                                <option value="">Choose the report type</option>
-                                <option value="donation">Donation</option>
-                                <option value="request">Request</option>
-                                <option value="damage">Damage Report</option>
+                        <div><label>Safety Condition:</label>
+                            <select name="safety_condition">
+                                <option value="">Choose the Safety Condition</option>
+                                <option value="pothole">Pothole</option>
+                                <option value="crocodile cracking">Crocodile Cracking</option>
+                                <option value="blind junction">Blind Junction</option>
+                                <option value="overgrown vegetation">Overgrown Vegetation</option>
+                                <option value="roadway debris">Roadway Debris</option>
+                                <option value="damaged sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="graffiti">Graffiti</option>
+                                <option value="playground equipment">Playground Equipment</option>
+                                <option value="pedestrian crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                        <div class="additional_msg_div" style="visibility: hidden"><label class="additional_msg"></label>
-                            <select class="additional_msg_select" name="resource_or_damage"></select>
-                        </div>
-                        <div><label>Disaster Type:</label>
-                            <select name="disaster_type">
-                                <option value="">Choose the disaster type</option>
-                                <option value="flood">flood</option>
-                                <option value="wildfire">wildfire</option>
-                                <option value="earthquake">earthquake</option>
-                                <option value="tornado">tornado</option>
-                                <option value="hurricane">hurricane</option>
-                                <option value="other">other</option>
+                        <div><label>Action Required:</label>
+                            <select name="action required">
+                                <option value="">Choose the Action Required</option>
+                                <option value="cosmetic">Cosmetic</option>
+                                <option value="inspection needed">Inspection Needed</option>
+                                <option value="maintenance needed">Maintenance Needed</option>
+                                <option value="safety hazard">Safety Hazard</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-default">
@@ -136,7 +139,6 @@
 
 <script src="js/loadform.js"></script>
 <script src="js/loadmap.js"></script>
-
 
 </body>
 </html>

@@ -157,7 +157,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         String sql = "select safety_condition, description, action_required, report_date" +
             "reporter.first_name, reporter.last_name, reporter.email, reporter.phone_num," +
             "locality, county, state, ST_X(geom) as longitude, ST_Y(geom) as latitude, from geo576.report report join geo576.reporter reporter " +
-            "ongeo576.report.reporter =geo576.reporter.id";
+            "on geo576.report.reporter =geo576.reporter.id";
 
 
 
