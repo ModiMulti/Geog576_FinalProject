@@ -13,22 +13,22 @@ public class JDBCDemo {
             Class.forName("org.postgresql.Driver");
 
             // establish connection
-            String url = "jdbc:postgresql://localhost:5432/disastermngt";
-            conn = DriverManager.getConnection(url, "postgres", "admin");
+            String url = "jdbc:postgresql://geo576final.cyvjwyqynbfu.us-east-2.rds.amazonaws.com:5432/geo576";
+            conn = DriverManager.getConnection(url, "appuser", "geo576");
 
             // query the database
-            String sql = "select id, report_type, disaster_type, time_stamp, " +
-                    "ST_AsText(geom) as geom from report";
+            String sql = "select safety_condition, description, action_required, report_date, " +
+                    "ST_AsText(geom) as geom from geo576.report";
             stmt = conn.createStatement();
             ResultSet res = stmt.executeQuery(sql);
 
             // print the result
             if (res != null) {
                 while (res.next()) {
-                    System.out.println("id: " + res.getString("id"));
-                    System.out.println("report_type: " + res.getString("report_type"));
-                    System.out.println("disaster: " + res.getString("disaster_type"));
-                    System.out.println("time_stamp: " + res.getString("time_stamp"));
+                    System.out.println("safety_condition: " + res.getString("safety_condition"));
+                    System.out.println("description: " + res.getString("description"));
+                    System.out.println("action_required: " + res.getString("action_required"));
+                    System.out.println("report_date: " + res.getString("report_date"));
                     System.out.println("geom: " + res.getString("geom"));
                 }
             }
