@@ -19,7 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- Google Map js libraries-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8lnqrxEsxXQSPlxLx1q6c249Weoc6MvA&libraries=places,visualization&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8lnqrxEsxXQSPlxLx1q6c249Weoc6MvA&libraries=places,visualization&callback=initMap"async=""defer=""></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
