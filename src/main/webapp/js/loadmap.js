@@ -41,15 +41,15 @@ function mapInitialization(reports) {
 
         // Create the infoWindow content
         var contentStr = '<h4>Report Details</h4><hr>';
-        contentStr += '<p><b>' + 'Disaster' + ':</b>&nbsp' + e['disaster'] + '</p>';
-        contentStr += '<p><b>' + 'Report Type' + ':</b>&nbsp' + e['report_type'] +
+        contentStr += '<p><b>' + 'Safety Condition' + ':</b>&nbsp' + e['safety_condition'] + '</p>';
+        contentStr += '<p><b>' + 'Action Required' + ':</b>&nbsp' + e['action_required'] +
             '</p>';
-        if (e['report_type'] == 'request' || e['report_type'] == 'donation') {
-            contentStr += '<p><b>' + 'Resource Type' + ':</b>&nbsp' +
-                e['resource_type'] + '</p>';
+        if (e['action_required'] == 'cosmetic' || e['action_required'] == 'inspection needed') {
+            contentStr += '<p><b>' + 'test' + ':</b>&nbsp' +
+                e['county'] + '</p>';
         }
-        else if (e['report_type'] == 'damage') {
-            contentStr += '<p><b>' + 'Damage Type' + ':</b>&nbsp' + e['damage_type']
+        else if (e['action_required'] == 'maintenance needed' || e['action_required'] == 'inspection needed') {
+            contentStr += '<p><b>' + 'test2' + ':</b>&nbsp' + e['county']
                 + '</p>';
         }
 
@@ -57,19 +57,21 @@ function mapInitialization(reports) {
         contentStr += '<p><b>' + 'Reportor' + ':</b>&nbsp' + e['first_name'] + '&nbsp' + e['last_name'] + '</p>';
 
         contentStr += '<p><b>' + 'Timestamp' + ':</b>&nbsp' +
-            e['time_stamp'].substring(0,19) + '</p>';
-        if ('message' in e){
-            contentStr += '<p><b>' + 'Message' + ':</b>&nbsp' + e['message'] + '</p>';
+            e['report_date'].substring(0,19) + '</p>';
+        if ('description' in e){
+            contentStr += '<p><b>' + 'Message' + ':</b>&nbsp' + e['description'] + '</p>';
         }
 
         // Answer - Question 2 - Lab 6
         var icon_img = '';
 
-        if(e['report_type'] == 'donation') {
+        if(e['action_required'] == 'cosmetic') {
             icon_img = 'http://maps.google.com/mapfiles/kml/shapes/convenience.png';
-        }else if(e['report_type'] == 'request'){
+        }else if(e['action_required'] == 'inspection needed'){
             icon_img = 'http://maps.google.com/mapfiles/kml/shapes/info.png';
-        }else if(e['report_type'] == 'damage'){
+        }else if(e['action_required'] == 'maintenance needed'){
+            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
+        }else if(e['action_required'] == 'safety hazard'){
             icon_img = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
         }
 
