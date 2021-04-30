@@ -71,28 +71,19 @@ function createReport(event) {
         url: 'HttpServlet',
         type: 'POST',
         data: a,
-        success: function (report) {
-            $.ajax({
-                url: 'HttpServlet',
-                type: 'POST',
-                data: {"tab_id": "1"},
-                success: function (reports) {
-                    alert("The report is successfully submitted!");
-                    mapInitialization(reports);
+        success: function(reports){
+            alert("The report is successfully submitted!");
+            //
+            showAllReports(); //Question 4.5 Answer
+            //onPlaceChanged(); //Question 4.6 Answer
+            document.getElementById("create_report_form").reset(); //Question 4.4 Answer
+            $(".additional_msg_div").css({"visibility":"hidden"}); //Question 4.4 Answer
 
-                    // Answer - Question 4 - Bonus - Lab 6
-                    onPlaceChanged();
-                },
-                error: function (xhr, status, error) {
-                    alert("An AJAX error occurred:" + status + "\nError: " + error);
-                }
-            });
-            document.getElementById("create_report_form").reset();
-            $("#create_report_form").find(".additional_msg_div").css("visibility", "hidden");
         },
-        error: function (xhr, status, error) {
+        error: function(xhr, status, error) {
             alert("Status: " + status + "\nError: " + error);
         }
+
     });
 }
 

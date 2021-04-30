@@ -46,15 +46,6 @@
                         <div><label>Tel:&nbsp</label><input placeholder="Your telephone number" name="reporter_tel"></div>
                         <div><label>Email:&nbsp</label><input placeholder="Your email address" name="reporter_email"></div>
 
-                        <div><label>Action Required:</label>
-                            <select name="action_required">
-                                <option value="">Choose action</option>
-                                <option value="cosmetic">Cosmetic</option>
-                                <option value="inspection_needed">Inspection Needed</option>
-                                <option value="maintenance_needed">Maintenance Needed</option>
-                                <option value="safety_hazard">Safety Hazard</option>
-                            </select>
-                        </div>
                         <div><label>Safety Condition:</label>
                             <select name="safety_condition">
                                 <option value="">Choose condition</option>
@@ -72,22 +63,23 @@
                                 <option value="other">Other</option>
                             </select>
                         </div>
+
+                        <div><label>Action Required:</label>
+                            <select name="action_required">
+                                <option value="">Choose action</option>
+                                <option value="cosmetic">Cosmetic</option>
+                                <option value="inspection_needed">Inspection Needed</option>
+                                <option value="maintenance_needed">Maintenance Needed</option>
+                                <option value="safety_hazard">Safety Hazard</option>
+                            </select>
+                        </div>
                         <!--<div><label>Address:</label>
                             <input id="autocomplete" placeholder="Address" >
                         </div> -->
-
-                        <div><label>Description:</label>
-                            <input id="description" placeholder="Please enter a description." >
-                        </div>
-                        <div><label>Locality:</label>
-                            <input id="locality" placeholder="Please the local place name." >
-                        </div>
-                        <div><label>County:</label>
-                            <input id="county" placeholder="Please enter the county." >
-                        </div>
-                        <div><label>State:</label>
-                            <input id="state" placeholder="Please enter the state." >
-                        </div>
+                        <div><label>Description:&nbsp</label><input placeholder="Please enter a description." name="description"></div>
+                        <div><label>Locality:&nbsp</label><input placeholder="Please the local place name." name="locality"></div>
+                        <div><label>County:&nbsp</label><input placeholder="Please enter the county." name="county"></div>
+                        <div><label>State:&nbsp</label><input placeholder="Please enter the state." name="state"></div>
 
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
                             <span class="glyphicon glyphicon-star"></span> Submit

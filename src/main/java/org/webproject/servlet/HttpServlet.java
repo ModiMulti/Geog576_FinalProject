@@ -120,7 +120,8 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         String state = request.getParameter("state");
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
-        if (safety_cond != null) {safety_cond =  safety_cond;}
+        System.out.println("pre-parameters " + safety_cond + " " + desc + " " + act_req + " " +  local + " " +  county + " "  + state + " " + lon + " " + lat);
+        if (safety_cond != null) {safety_cond =  "'" + safety_cond + "'";}
         if (desc != null) {desc = "'" + desc + "'";}
         if (act_req != null) {act_req = "'" + act_req + "'";}
         if (local != null) {local = "'" + local + "'";}
@@ -128,10 +129,11 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         if (state != null) {state = "'" + state + "'";}
 
         sql = "insert into geo576.report (reporter, safety_condition, description, action_required," +
-                "locality, county, state, geom) values (" + reporter_id + "," + safety_cond + "," + desc +
+                "locality, county, state, geom) values (" + reporter_id + "," + safety_cond + "," + desc + "," +
                 act_req + "," + local + "," + county + "," + state
                 + ", ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326))";
 
+        System.out.println(sql);
 
         /*
         sql = "insert into report (reporter, safety_condition, description, action_required," +
