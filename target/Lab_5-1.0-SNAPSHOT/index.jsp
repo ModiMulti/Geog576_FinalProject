@@ -19,7 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- Google Map js libraries-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8lnqrxEsxXQSPlxLx1q6c249Weoc6MvA&libraries=places,visualization&callback=initMap"async=""defer=""></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEj4xpbER0Q6wmyEwxN--Fi9pML0ckwh8&libraries=places,visualization&callback=initMap"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -50,25 +50,25 @@
                             <select name="action_required">
                                 <option value="">Choose action</option>
                                 <option value="cosmetic">Cosmetic</option>
-                                <option value="inspection needed">Inspection Needed</option>
-                                <option value="maintenance needed">Maintenance Needed</option>
-                                <option value="safety hazard">Safety Hazard</option>
+                                <option value="inspection_needed">Inspection Needed</option>
+                                <option value="maintenance_needed">Maintenance Needed</option>
+                                <option value="safety_hazard">Safety Hazard</option>
                             </select>
                         </div>
                         <div><label>Safety Condition:</label>
-                            <select onchange="onSelectReportType(this)" name="safety_condition">
+                            <select name="safety_condition">
                                 <option value="">Choose condition</option>
                                 <option value="pothole">Pothole</option>
-                                <option value="crocodile cracking">Crocodile Cracking</option>
-                                <option value="blind junction">Blind Junction</option>
-                                <option value="overgrown vegetation">Overgrown Vegetation</option>
-                                <option value="roadway debris">Roadway Debris</option>
-                                <option value="damaged sidewalk">Damaged Sidewalk</option>
-                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="crocodile_cracking">Crocodile Cracking</option>
+                                <option value="blind_junction">Blind Junction</option>
+                                <option value="overgrown_vegetation">Overgrown Vegetation</option>
+                                <option value="roadway_debris">Roadway Debris</option>
+                                <option value="damaged_sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked_storm_drain">Blocked Storm Drain</option>
                                 <option value="graffiti">Graffiti</option>
-                                <option value="playground equipment">Playground Equipment</option>
-                                <option value="pedestrian crossing">Pedestrian Crossing</option>
-                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="playground_equipment">Playground Equipment</option>
+                                <option value="pedestrian_crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian_walkway_or_facility">Pedestrian Walkway or Facility</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -102,16 +102,16 @@
                             <select name="safety_condition">
                                 <option value="">Choose the Safety Condition</option>
                                 <option value="pothole">Pothole</option>
-                                <option value="crocodile cracking">Crocodile Cracking</option>
-                                <option value="blind junction">Blind Junction</option>
-                                <option value="overgrown vegetation">Overgrown Vegetation</option>
-                                <option value="roadway debris">Roadway Debris</option>
-                                <option value="damaged sidewalk">Damaged Sidewalk</option>
-                                <option value="blocked storm drain">Blocked Storm Drain</option>
+                                <option value="crocodile_cracking">Crocodile Cracking</option>
+                                <option value="blind_junction">Blind Junction</option>
+                                <option value="overgrown_vegetation">Overgrown Vegetation</option>
+                                <option value="roadway_debris">Roadway Debris</option>
+                                <option value="damaged_sidewalk">Damaged Sidewalk</option>
+                                <option value="blocked_storm_drain">Blocked Storm Drain</option>
                                 <option value="graffiti">Graffiti</option>
-                                <option value="playground equipment">Playground Equipment</option>
-                                <option value="pedestrian crossing">Pedestrian Crossing</option>
-                                <option value="pedestrian walkway or facility">Pedestrian Walkway or Facility</option>
+                                <option value="playground_equipment">Playground Equipment</option>
+                                <option value="pedestrian_crossing">Pedestrian Crossing</option>
+                                <option value="pedestrian_walkway_or_facility">Pedestrian Walkway or Facility</option>
                                 <option value="other">Other</option>
                             </select>
                         </div>
@@ -119,9 +119,9 @@
                             <select name="action required">
                                 <option value="">Choose the Action Required</option>
                                 <option value="cosmetic">Cosmetic</option>
-                                <option value="inspection needed">Inspection Needed</option>
-                                <option value="maintenance needed">Maintenance Needed</option>
-                                <option value="safety hazard">Safety Hazard</option>
+                                <option value="inspection_needed">Inspection Needed</option>
+                                <option value="maintenance_needed">Maintenance Needed</option>
+                                <option value="safety_hazard">Safety Hazard</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-default">
