@@ -12,6 +12,17 @@ public class DBUtility {
     private static final String Username = "appuser";
     private static final String Password = "geo576";
 
+
+
+/*public class DBUtility {
+    private static final String Driver = "org.postgresql.Driver";
+    private static final String ConnUrl = "jdbc:postgresql://localhost:5432/geo576";
+    private static final String Username = "postgres";
+    private static final String Password = ;
+
+ */
+
+
     // This is a constructor
     public DBUtility() {
     }
@@ -70,12 +81,12 @@ public class DBUtility {
         DBUtility util = new DBUtility();
 
         // 1. create a user
-        util.modifyDB("insert into geo576.reporter(first_name, last_name) values ('test_user_1_fN', 'test_user_1_lN')");
+        util.modifyDB("insert into reporter(first_name, last_name) values ('test_user_1_fN', 'test_user_1_lN')");
 
         // 2. query the database
-        ResultSet res = util.queryDB("select * from geo576.report");
+        ResultSet res = util.queryDB("select * from reporter");
         while (res.next()) {
-            System.out.println(res.getString("safety_condition"));
+            System.out.println(res.getString("first_name"));
         }
 
     }

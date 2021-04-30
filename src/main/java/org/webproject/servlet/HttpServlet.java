@@ -87,13 +87,23 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         if (reporter_email != null) {reporter_email = "'" + reporter_email + "'";}
         if (reporter_fName != null && reporter_lName != null) {
             // create the reporter
-            sql = "insert into geo576.reporter (first_name, last_name, email, phone_num) " +
+           sql = "insert into geo576.reporter (first_name, last_name, email, phone_num) " +
                     "values (" + reporter_fName + "," + reporter_lName + "," + reporter_email + "," +
                     reporter_phone + ")";
+
+
+
+
+            /*sql = "insert into reporter (first_name, last_name, email, phone_num) " +
+                    "values (" + reporter_fName + "," + reporter_lName + "," + reporter_email + "," +
+                    reporter_phone + ")";
+
+             */
             dbutil.modifyDB(sql);
 
             // record the reporter id
             ResultSet res_1 = dbutil.queryDB("select last_value from geo576.reporter_id_seq");
+            //ResultSet res_1 = dbutil.queryDB("select last_value from reporter_id_seq");
             res_1.next();
             reporter_id = res_1.getInt(1);
 
@@ -110,7 +120,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         String state = request.getParameter("state");
         String lon = request.getParameter("longitude");
         String lat = request.getParameter("latitude");
-        if (safety_cond != null) {safety_cond = "'" + safety_cond + "'";}
+        if (safety_cond != null) {safety_cond =  safety_cond;}
         if (desc != null) {desc = "'" + desc + "'";}
         if (act_req != null) {act_req = "'" + act_req + "'";}
         if (local != null) {local = "'" + local + "'";}
@@ -121,10 +131,20 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
                 "locality, county, state, geom) values (" + reporter_id + "," + safety_cond + "," + desc +
                 act_req + "," + local + "," + county + "," + state
                 + ", ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326))";
+
+
+        /*
+        sql = "insert into report (reporter, safety_condition, description, action_required," +
+                "locality, county, state, geom) values (" + reporter_id + "," + safety_cond + "," + desc +
+                act_req + "," + local + "," + county + "," + state
+                + ", ST_GeomFromText('POINT(" + 35 + " " + -47 + ")', 4326))";
+
+         */
         dbutil.modifyDB(sql);
 
         // record report_id
         ResultSet res_2 = dbutil.queryDB("select last_value from geo576.report_id_seq");
+        //ResultSet res_2 = dbutil.queryDB("select last_value from report_id_seq");
         res_2.next();
         report_id = res_2.getInt(1);
 
@@ -154,10 +174,19 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
 
         // request report
 
-        String sql = "select safety_condition, description, action_required, report_date" +
-            "reporter.first_name, reporter.last_name, reporter.email, reporter.phone_num," +
-            "locality, county, state, ST_X(geom) as longitude, ST_Y(geom) as latitude, from geo576.report report join geo576.reporter reporter " +
-            "on geo576.report.reporter =geo576.reporter.id";
+       String sql = "select safety_condition, description, action_required, report_date, " +
+               "reporter.first_name, reporter.last_name, reporter.email, reporter.phone_num, " +
+               "locality, county, state, ST_X(geom) as longitude, ST_Y(geom) as latitude from geo576.report report join geo576.reporter reporter " +
+               "on report.reporter = reporter.id";
+
+
+        /*
+        String sql = "select safety_condition, description, action_required, report_date, " +
+                "reporter.first_name, reporter.last_name, reporter.email, reporter.phone_num, " +
+                "locality, county, state, ST_X(geom) as longitude, ST_Y(geom) as latitude from report join reporter " +
+                "on report.reporter = reporter.id";
+
+         */
 
 
 
@@ -172,13 +201,13 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         DBUtility dbutil = new DBUtility();
         if (safety_cond != null) {
             if (action_req != null) {
-                sql += "where safety_condition = '" + safety_cond + "' and action_required = '" + action_req + "'";
+                sql += " where safety_condition = '" + safety_cond + "' and action_required = '" + action_req + "'";
             } else {
-                sql += "where safety_condition = '" + safety_cond + "'";
+                sql += " where safety_condition = '" + safety_cond + "'";
             }
         } else {
             if (action_req != null) {
-                sql += "where action_required = '" + action_req + "'";
+                sql += " where action_required = '" + action_req + "'";
 
             }
         }
@@ -187,7 +216,7 @@ public class HttpServlet extends javax.servlet.http.HttpServlet {
         while (res.next()) {
             // add to response
             HashMap<String, String> m = new HashMap<String,String>();
-            m.put("report_id", res.getString("id"));
+            //m.put("report_id", res.getString("id"));
             m.put("safety_condition", res.getString("safety_condition"));
             m.put("description", res.getString("description"));
             m.put("action_required", res.getString("action_required"));

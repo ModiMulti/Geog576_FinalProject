@@ -5,7 +5,7 @@ var infowindow = new google.maps.InfoWindow();
 
 function initialization() {
     showAllReports();
-    initAutocomplete();
+    //initAutocomplete();
 }
 
 function showAllReports() {
@@ -101,14 +101,14 @@ function mapInitialization(reports) {
 
 }
 
-function initAutocomplete() {
+/*function initAutocomplete() {
     // Create the autocomplete object
     autocomplete = new google.maps.places.Autocomplete(document.
     getElementById('autocomplete'));
 
     // When the user selects an address from the dropdown, show the place selected
     autocomplete.addListener('place_changed', onPlaceChanged);
-}
+} */
 
 //Answer - Question 3 - Lab 6
 function onPlaceChanged() {
