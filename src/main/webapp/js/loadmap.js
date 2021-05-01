@@ -5,7 +5,7 @@ var infowindow = new google.maps.InfoWindow();
 
 function initialization() {
     showAllReports();
-    //initAutocomplete();
+
 }
 
 function showAllReports() {
@@ -21,6 +21,10 @@ function showAllReports() {
         }
     });
 }
+var report_lat;
+var report_lon;
+
+
 
 
 function mapInitialization(reports) {
@@ -40,11 +44,18 @@ function mapInitialization(reports) {
             position: location,
             map: map
         });
+        report_lat = location.lat();
+        report_lon = location.lng();
+        $("#latitude").attr('value', report_lat);
+        $("#longitude").attr('value',report_lon);
+
+
 
         //Attach click event handler to the marker.
         google.maps.event.addListener(marker, "click", function (event) {
             var infoWindow = new google.maps.InfoWindow({
                 content: 'Latitude: ' + location.lat() + '<br />Longitude: ' + location.lng()
+
             });
             infoWindow.open(map, marker);
         });
