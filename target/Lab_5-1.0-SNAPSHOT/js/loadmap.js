@@ -22,6 +22,7 @@ function showAllReports() {
     });
 }
 
+
 function mapInitialization(reports) {
     var mapOptions = {
         mapTypeId : google.maps.MapTypeId.ROADMAP, // Set the type of Map
@@ -31,6 +32,24 @@ function mapInitialization(reports) {
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     var bounds = new google.maps.LatLngBounds ();
+
+    google.maps.event.addListener(map, "click", function (event) {
+        var location = event.latLng;
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        //Attach click event handler to the marker.
+        google.maps.event.addListener(marker, "click", function (event) {
+            var infoWindow = new google.maps.InfoWindow({
+                content: 'Latitude: ' + location.lat() + '<br />Longitude: ' + location.lng()
+            });
+            infoWindow.open(map, marker);
+        });
+    });
+        //alert(this.position);
 
     $.each(reports, function(i, e) {
         var long = Number(e['longitude']);
