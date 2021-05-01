@@ -5,8 +5,8 @@ function createReport(event) {
 
     var a = $("#create_report_form").serializeArray();
     a.push({name: "tab_id", value: "0"});
-    a.push({name: "longitude", value: location.lng()});
-    a.push({name: "latitude", value: location.lat()});
+    //a.push({name: "longitude", value: report_lon});
+   // a.push({name: "latitude", value: report_lat});
     //a.push({name: "longitude", value: "47"});
     //a.push({name: "latitude", value: "-35"});
     a = a.filter(function (item) {

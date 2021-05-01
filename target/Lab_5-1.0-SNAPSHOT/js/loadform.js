@@ -1,64 +1,12 @@
-/*function onSelectSafetyConditionType(ele){
-    var form = $(ele).parent().parent();
-    var label = $(form).find(".additional_msg");
-    var select = $(form).find(".additional_msg_select");
 
-    switch (ele.value) {
-        case "cosmetic":
-            label.text("Cosmetic Type:");
-            select.find('option').remove();
-            select.append($("<option></option>")
-                .attr("value","")
-                .text("Choose the cosmetic type"));
-            selectValues = ['blind', 'overgrown', 'graffiti', 'other',];
-            $.each(selectValues, function(index,value) {
-                select.append($("<option></option>")
-                    .attr("value",value)
-                    .text(value));
-            });
-            break;
-        case "inspection":
-        case "maintenance":
-            label.text("Inspection or Maintenance Type:");
-            select.find('option').remove();
-            select.append($("<option></option>")
-                .attr("value","")
-                .text("Choose the inspection or maintenance type"));
-            selectValues = ['sidewalkdmg', 'pedx', 'pedwalkway', 'playground', 'other',];
-            $.each(selectValues, function(index,value) {
-                select.append($("<option></option>")
-                    .attr("value",value)
-                    .text(value));
-            });
-            break;
-        case "hazard":
-            label.text("Hazard Type:");
-            select.find('option').remove();
-            select.append($("<option></option>")
-                .attr("value","")
-                .text("Choose the hazard type"));
-            selectValues = ['pothole', 'cracking', 'debris', 'drain', 'other'];
-            $.each(selectValues, function(index,value) {
-                select.append($("<option></option>")
-                    .attr("value",value)
-                    .text(value));
-            });
-            break;
-        default:
-            $(form).find(".additional_msg_div").css("visibility", "hidden");
-            return;
-    }
-    $(form).find(".additional_msg_div").css("visibility", "visible");
-}
-*/
-// Answer - Question 4 - Lab 6
+
 function createReport(event) {
     event.preventDefault(); // stop form from submitting normally
 
     var a = $("#create_report_form").serializeArray();
     a.push({name: "tab_id", value: "0"});
-    a.push({name: "longitude", value: location.lng()});
-    a.push({name: "latitude", value: location.lat()});
+    //a.push({name: "longitude", value: report_lon});
+   // a.push({name: "latitude", value: report_lat});
     //a.push({name: "longitude", value: "47"});
     //a.push({name: "latitude", value: "-35"});
     a = a.filter(function (item) {
