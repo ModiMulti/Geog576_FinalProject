@@ -57,10 +57,10 @@ function createReport(event) {
 
     var a = $("#create_report_form").serializeArray();
     a.push({name: "tab_id", value: "0"});
-    //a.push({name: "longitude", value: place.geometry.location.lng()});
-    //a.push({name: "latitude", value: place.geometry.location.lat()});
-    a.push({name: "longitude", value: "47"});
-    a.push({name: "latitude", value: "-35"});
+    a.push({name: "longitude", value: location.lng()});
+    a.push({name: "latitude", value: location.lat()});
+    //a.push({name: "longitude", value: "47"});
+    //a.push({name: "latitude", value: "-35"});
     a = a.filter(function (item) {
         return item.value != '';
 

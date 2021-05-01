@@ -80,7 +80,8 @@
                         <div><label>Locality:&nbsp</label><input placeholder="Please the local place name." name="locality"></div>
                         <div><label>County:&nbsp</label><input placeholder="Please enter the county." name="county"></div>
                         <div><label>State:&nbsp</label><input placeholder="Please enter the state." name="state"></div>
-
+                        <div><label>Latitude:&nbsp</label><input placeholder="Please click on the map for location." name="latitude"></div>
+                        <div><label>Longitude:&nbsp</label><input placeholder="Please click on the map for location." name="longitude"></div>
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
                             <span class="glyphicon glyphicon-star"></span> Submit
                         </button>
