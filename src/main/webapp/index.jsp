@@ -41,12 +41,12 @@
                 <!-- Create Report Tab Panel -->
                 <div class="tab-pane active" id="create_report">
                     <form id = "create_report_form">
-                        <div><label>First Name:&nbsp</label><input placeholder="Your first name" name="reporter_fN"></div>
-                        <div><label>Last Name:&nbsp</label><input placeholder="Your last name" name="reporter_lN"></div>
-                        <div><label>Tel:&nbsp</label><input placeholder="Your telephone number" name="reporter_tel"></div>
-                        <div><label>Email:&nbsp</label><input placeholder="Your email address" name="reporter_email"></div>
+                        <div><label>First Name*&nbsp</label><input placeholder="Your first name" name="reporter_fN"></div>
+                        <div><label>Last Name*&nbsp</label><input placeholder="Your last name" name="reporter_lN"></div>
+                        <div><label>Telephone&nbsp</label><input placeholder="Your telephone number" name="reporter_tel"></div>
+                        <div><label>Email&nbsp</label><input placeholder="Your email address" name="reporter_email"></div>
 
-                        <div><label>Safety Condition:</label>
+                        <div><label>Safety Condition*</label>
                             <select name="safety_condition">
                                 <option value="">Choose condition</option>
                                 <option value="pothole">Pothole</option>
@@ -64,7 +64,7 @@
                             </select>
                         </div>
 
-                        <div><label>Action Required:</label>
+                        <div><label>Action Required*</label>
                             <select name="action_required">
                                 <option value="">Choose action</option>
                                 <option value="cosmetic">Cosmetic</option>
@@ -74,12 +74,12 @@
                             </select>
                         </div>
 
-                        <div><label>Description:&nbsp</label><input placeholder="Please enter a description." name="description"></div>
-                        <div><label>Locality:&nbsp</label><input placeholder="Please the local place name." name="locality"></div>
-                        <div><label>County:&nbsp</label><input placeholder="Please enter the county." name="county"></div>
-                        <div><label>State:&nbsp</label><input placeholder="Please enter the state." name="state"></div>
-                        <div><label>Latitude:&nbsp</label><input id = "latitude" placeholder="Please click on the map for location." name="latitude"></div>
-                        <div><label>Longitude:&nbsp</label><input id="longitude" placeholder="Please click on the map for location." name="longitude"></div>
+                        <div><label>Description&nbsp</label><input placeholder="Please enter a description." name="description"></div>
+                        <div><label>Locality&nbsp</label><input placeholder="Please the local place name." name="locality"></div>
+                        <div><label>County&nbsp</label><input placeholder="Please enter the county." name="county"></div>
+                        <div><label>State&nbsp</label><input placeholder="Please enter the state." name="state"></div>
+                        <div><label>Latitude&nbsp</label><input id = "latitude" placeholder="Please click on the map for location." name="latitude"></div>
+                        <div><label>Longitude&nbsp</label><input id="longitude" placeholder="Please click on the map for location." name="longitude"></div>
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
                             <span class="glyphicon glyphicon-star"></span> Submit
                         </button>
