@@ -5,10 +5,7 @@ function createReport(event) {
 
     var a = $("#create_report_form").serializeArray();
     a.push({name: "tab_id", value: "0"});
-    //a.push({name: "longitude", value: report_lon});
-   // a.push({name: "latitude", value: report_lat});
-    //a.push({name: "longitude", value: "47"});
-    //a.push({name: "latitude", value: "-35"});
+
     a = a.filter(function (item) {
         return item.value != '';
 
@@ -22,10 +19,10 @@ function createReport(event) {
         success: function(reports){
             alert("The report is successfully submitted!");
             //
-            showAllReports(); //Question 4.5 Answer
-            //onPlaceChanged(); //Question 4.6 Answer
-            document.getElementById("create_report_form").reset(); //Question 4.4 Answer
-            $(".additional_msg_div").css({"visibility":"hidden"}); //Question 4.4 Answer
+            showAllReports();
+
+            document.getElementById("create_report_form").reset();
+            $(".additional_msg_div").css({"visibility":"hidden"});
 
         },
         error: function(xhr, status, error) {

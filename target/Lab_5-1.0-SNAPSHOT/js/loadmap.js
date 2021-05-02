@@ -63,7 +63,7 @@ function mapInitialization(reports) {
             infoWindow.open(map, marker);
         });
     });
-        //alert(this.position);
+
 
     $.each(reports, function(i, e) {
         var long = Number(e['longitude']);
@@ -90,16 +90,16 @@ function mapInitialization(reports) {
                 e['state'] + '</p>';
         }
 
-        // Answer - Question 1 - Lab 6
-        contentStr += '<p><b>' + 'Reportor' + ':</b>&nbsp' + e['first_name'] + '&nbsp' + e['last_name'] + '</p>';
+
+        contentStr += '<p><b>' + 'Reporter' + ':</b>&nbsp' + e['first_name'] + '&nbsp' + e['last_name'] + '</p>';
 
         contentStr += '<p><b>' + 'Timestamp' + ':</b>&nbsp' +
             e['report_date'].substring(0,19) + '</p>';
         if ('description' in e){
-            contentStr += '<p><b>' + 'Message' + ':</b>&nbsp' + e['description'] + '</p>';
+            contentStr += '<p><b>' + 'Description' + ':</b>&nbsp' + e['description'] + '</p>';
         }
 
-        // Answer - Question 2 - Lab 6
+
         var icon_img = '';
 
         if(e['action_required'] == 'cosmetic') {
@@ -114,7 +114,7 @@ function mapInitialization(reports) {
 
         var icon = {
             url: icon_img, // url
-            scaledSize: new google.maps.Size(30, 20), // scaled size
+            scaledSize: new google.maps.Size(15, 10), // scaled size
             origin: new google.maps.Point(0, 0), // origin
             anchor: new google.maps.Point(0, 0) // anchor
         };
