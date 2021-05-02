@@ -2,6 +2,9 @@ var map;
 var place;
 var autocomplete;
 var infowindow = new google.maps.InfoWindow();
+var report_lat;
+var report_lon;
+var gmarkers=[];
 
 function initialization() {
     showAllReports();
@@ -21,8 +24,6 @@ function showAllReports() {
         }
     });
 }
-var report_lat;
-var report_lon;
 
 
 
@@ -40,14 +41,16 @@ function mapInitialization(reports) {
     google.maps.event.addListener(map, "click", function (event) {
         var location = event.latLng;
 
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             position: location,
             map: map
         });
+        gmarkers.push(marker);
         report_lat = location.lat();
         report_lon = location.lng();
         $("#latitude").attr('value', report_lat);
         $("#longitude").attr('value',report_lon);
+        oneMarker(gmarkers);
 
 
 
@@ -137,14 +140,11 @@ function mapInitialization(reports) {
 
 }
 
-/*function initAutocomplete() {
-    // Create the autocomplete object
-    autocomplete = new google.maps.places.Autocomplete(document.
-    getElementById('autocomplete'));
-
-    // When the user selects an address from the dropdown, show the place selected
-    autocomplete.addListener('place_changed', onPlaceChanged);
-} */
+function oneMarker(m){
+    for(i=0; i<gmarkers.length-1; i++){
+        gmarkers[i].setMap(null);
+    }
+};
 
 //Answer - Question 3 - Lab 6
 function onPlaceChanged() {
