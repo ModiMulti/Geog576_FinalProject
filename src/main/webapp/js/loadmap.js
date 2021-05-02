@@ -74,13 +74,17 @@ function mapInitialization(reports) {
         contentStr += '<p><b>' + 'Safety Condition' + ':</b>&nbsp' + e['safety_condition'] + '</p>';
         contentStr += '<p><b>' + 'Action Required' + ':</b>&nbsp' + e['action_required'] +
             '</p>';
-        if (e['action_required'] == 'cosmetic' || e['action_required'] == 'inspection needed') {
-            contentStr += '<p><b>' + 'test' + ':</b>&nbsp' +
-                e['county'] + '</p>';
+        if (e['action_required'] == 'cosmetic' || e['action_required'] == 'inspection needed' || e['action_required'] == 'maintenance needed' || e['action_required'] == 'safety hazard' )  {
+            contentStr += '<p><b>' + 'Locality' + ':</b>&nbsp' +
+                e['locality'] + '</p>'; contentStr += '<p><b>' + 'County' + ':</b>&nbsp' +
+                e['county'] + '</p>'; contentStr += '<p><b>' + 'State' + ':</b>&nbsp' +
+                e['state'] + '</p>';
         }
-        else if (e['action_required'] == 'maintenance needed' || e['action_required'] == 'inspection needed') {
-            contentStr += '<p><b>' + 'test2' + ':</b>&nbsp' + e['county']
-                + '</p>';
+        else if (e['action_required'] == 'maintenance_needed' || e['action_required'] == 'inspection_needed' || e['action_required'] == 'safety_hazard') {
+            contentStr += '<p><b>' + 'Locality' + ':</b>&nbsp' +
+                e['locality'] + '</p>'; contentStr += '<p><b>' + 'County' + ':</b>&nbsp' +
+                e['county'] + '</p>'; contentStr += '<p><b>' + 'State' + ':</b>&nbsp' +
+                e['state'] + '</p>';
         }
 
         // Answer - Question 1 - Lab 6
@@ -96,12 +100,12 @@ function mapInitialization(reports) {
         var icon_img = '';
 
         if(e['action_required'] == 'cosmetic') {
-            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/convenience.png';
-        }else if(e['action_required'] == 'inspection needed'){
-            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/info.png';
-        }else if(e['action_required'] == 'maintenance needed'){
-            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
-        }else if(e['action_required'] == 'safety hazard'){
+            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/triangle.png';
+        }else if(e['action_required'] == 'inspection needed' || e['action_required'] == 'inspection_needed'){
+            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/mechanic.png';
+        }else if(e['action_required'] == 'maintenance needed' || e['action_required'] == 'maintenance_needed'){
+            icon_img = 'http://maps.google.com/mapfiles/kml/shapes/flag.png';
+        }else if(e['action_required'] == 'safety hazard' || e['action_required'] == 'safety_hazard'){
             icon_img = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
         }
 
