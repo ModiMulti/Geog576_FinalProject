@@ -83,6 +83,7 @@
                         <button type="submit" class="btn btn-default" id="report_submit_btn">
                             <span class="glyphicon glyphicon-star"></span> Submit
                         </button>
+                        <p>* indicates required item</p>
                     </form>
                 </div>
 
